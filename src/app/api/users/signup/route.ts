@@ -2,7 +2,7 @@ import { connect } from '@/dbConfig'
 import User from '@/models/User.model'
 import { NextRequest, NextResponse } from 'next/server'
 import bcryptjs from 'bcryptjs'
-import { returnError } from '@/helpers'
+import { returnError, sendMail } from '@/helpers'
 
 connect()
 
@@ -25,6 +25,8 @@ export const POST = async (request: NextRequest) => {
 			email,
 			password: hashedPassword,
 		})
+
+		await sendMail({ email, emailType: 'VERIFY', userId: newUser._id })
 
 		return NextResponse.json(
 			{

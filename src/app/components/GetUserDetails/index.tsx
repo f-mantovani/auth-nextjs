@@ -18,12 +18,18 @@ const GetUserDetails = () => {
 			console.log(error)
 		}
 	}
+
 	return (
 		<div className='flex flex-col gap-2 my-2'>
 			{user && (
-				<Link className='p-2 bg-green-600 rounded' href={`/profile/${user._id}`}>
-					Go to your profile
-				</Link>
+				<>
+					<Link className='py-2 bg-green-600 rounded text-center' href={`/profile/${user._id}`}>
+						Go to your profile
+					</Link>
+					<button className='bg-violet-600 py-2 rounded text-center'>
+						Resend mail confirmation
+					</button>
+				</>
 			)}
 			<button onClick={getUserInfo}> UserDetais: {user && user.email}</button>
 		</div>

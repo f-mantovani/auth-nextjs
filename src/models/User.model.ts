@@ -1,4 +1,4 @@
-import { Schema, models, model } from 'mongoose'
+import { Schema, models, model, HydratedDocument, InferSchemaType } from 'mongoose'
 
 const userSchema = new Schema(
 	{
@@ -26,6 +26,8 @@ const userSchema = new Schema(
 	},
 	{ timestamps: true }
 )
+
+export type UserDocument = HydratedDocument<InferSchemaType<typeof userSchema>>
 
 const User = models.User || model('User', userSchema)
 export default User
