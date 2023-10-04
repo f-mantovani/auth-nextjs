@@ -3,7 +3,7 @@ import jwt, { JwtPayload } from 'jsonwebtoken'
 
 interface Token extends JwtPayload {
 	_id: string
-	username: string
+	email: string
 }
 
 export const getTokenData = async (request: NextRequest) => {

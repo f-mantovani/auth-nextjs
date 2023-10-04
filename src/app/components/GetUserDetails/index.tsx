@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 const GetUserDetails = () => {
 	const [user, setUser] = useState<null | {
-		username: string
+		email: string
 		_id: string
 	}>(null)
 
@@ -25,7 +25,7 @@ const GetUserDetails = () => {
 					Go to your profile
 				</Link>
 			)}
-			<button onClick={getUserInfo}> UserDetais: {user && user.username}</button>
+			<button onClick={getUserInfo}> UserDetais: {user && user.email}</button>
 		</div>
 	)
 }

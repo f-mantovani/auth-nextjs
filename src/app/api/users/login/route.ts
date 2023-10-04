@@ -10,13 +10,13 @@ connect()
 export const POST = async (request: NextRequest) => {
 	try {
 		const requestBody = await request.json()
-		const { username, password } = requestBody
+		const { email, password } = requestBody
 
-		const userFromDB = await User.findOne({ username })
+		const userFromDB = await User.findOne({ email })
 
 		if (!userFromDB) {
 			throw {
-				message: `Username and/or password incorrect`,
+				message: `Email and/or password incorrect`,
 				status: 400,
 			}
 		}
@@ -25,13 +25,13 @@ export const POST = async (request: NextRequest) => {
 
 		if (!passwordMatcher) {
 			throw {
-				message: `Username and/or password incorrect`,
+				message: `Email and/or password incorrect`,
 				status: 400,
 			}
 		}
 
 		const payload = {
-			username: userFromDB.username,
+			email: userFromDB.email,
 			_id: userFromDB._id,
 		}
 

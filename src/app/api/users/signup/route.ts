@@ -9,9 +9,9 @@ connect()
 export const POST = async (request: NextRequest) => {
 	try {
 		const requestBody = await request.json()
-		const { username, password } = requestBody
+		const { email, password } = requestBody
 
-		const userFromDB = await User.findOne({ username })
+		const userFromDB = await User.findOne({ email })
 		if (userFromDB) {
 			throw {
 				message: `User already exists`,
@@ -22,14 +22,14 @@ export const POST = async (request: NextRequest) => {
 		const hashedPassword = await bcryptjs.hash(password, 12)
 
 		const newUser = await User.create({
-			username,
+			email,
 			password: hashedPassword,
 		})
 
 		return NextResponse.json(
 			{
 				message: `User created successfully`,
-				username: newUser.username,
+				email: newUser.email,
 			},
 			{ status: 201 }
 		)

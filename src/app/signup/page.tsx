@@ -5,12 +5,12 @@ import Form from '../components/Form'
 import Input from '../components/Input/Input'
 
 const SignUpPage = () => {
-	const state = { username: '', password: '' }
+	const state = { email: '', password: '' }
 	return (
 		<div className='flex flex-col items-center'>
 			<h1 className='text-white text-2xl'>Sign Up</h1>
 			<Form state={state} button='Sign Up' route='users/signup' redirectWhere='/login'>
-				<Input placeholder='hermano' name='username' required />
+				<Input placeholder='hermano' name='email' required />
 				<Input placeholder='*********' name='password' required />
 			</Form>
 			<div className='w-auto flex flex-col items-center'>
